@@ -1,0 +1,36 @@
+Đây là hướng dẫn để cài đặt và chạy ứng dụng Docker với quyền truy cập camera và X11 Forwarding trên Jetson Nano.
+
+## Các Bước Thực Hiện
+
+### 1. Cập nhật hệ thống và cài đặt các gói cần thiết
+
+Trước tiên, cập nhật hệ thống của bạn và cài đặt các gói X11 cần thiết để chạy giao diện đồ họa:
+
+bash
+sudo apt update
+sudo apt install xorg openbox xauth
+2. Kiểm tra X11 có đang chạy không
+Kiểm tra biến môi trường DISPLAY trên hệ thống:
+echo $DISPLAY
+Nếu không có kết quả nào, bạn có thể cần phải thiết lập lại DISPLAY.
+3. Kiểm tra X11 có đang hoạt động không
+Để kiểm tra xem X11 có đang chạy không, hãy sử dụng lệnh sau:
+ps -e | grep X
+Nếu có kết quả trả về, điều đó có nghĩa là X11 đang chạy trên hệ thống của bạn.
+4. Thiết lập DISPLAY
+Nếu bước trên không trả về kết quả, bạn cần thiết lập lại biến môi trường DISPLAY:
+export DISPLAY=:0
+5. Cấp quyền truy cập X11 cho Docker
+Cấp quyền cho Docker có thể kết nối với hệ thống X11 để hiển thị đồ họa:
+6. Chạy Docker container với quyền truy cập camera và X11
+Chạy Docker container của bạn với quyền truy cập vào camera (USB hoặc CSI) và X11 để hiển thị kết quả:
+sudo docker run --rm --device /dev/video0 --runtime nvidia \
+  -e DISPLAY=:0 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  eye-detect
+Lệnh trên sẽ:
+
+Cho phép Docker container sử dụng thiết bị camera của bạn.
+Kết nối Docker với màn hình đồ họa của hệ thống host (máy tính của bạn).
+Chạy ứng dụng YOLO để phát hiện mắt và hiển thị kết quả lên màn hình.
+viết thành file readme.md để tôi cập nhật lên github
