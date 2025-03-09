@@ -156,3 +156,18 @@ This project utilizes:
 - **YOLOv11** for eye detection.  
 - **MobileNetV2** for efficient eye state classification.  
 - **FastAPI** for serving the WebView.
+
+---
+
+### **Option 2: Using Host Python**
+
+1. Install the required dependencies:
+   ```bash
+   sudo apt update
+   sudo apt install xorg openbox xauth
+   echo $DISPLAY
+   ps -e | grep X
+   export DISPLAY=:0
+   xhost +local:docker
+   sudo docker run --rm --device /dev/video0 --runtime nvidia   -e DISPLAY=:0   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   eye-detect
+   ```
