@@ -29,6 +29,7 @@ sudo docker run --rm --device /dev/video0 --runtime nvidia \
   -e DISPLAY=:0 \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   eye-detect
+sudo docker run --rm --device /dev/video0 --runtime nvidia   -e DISPLAY=:0   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   eye-detect
 Lệnh trên sẽ:
 
 Cho phép Docker container sử dụng thiết bị camera của bạn.
