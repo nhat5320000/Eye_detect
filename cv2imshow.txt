@@ -22,6 +22,7 @@ Nếu bước trên không trả về kết quả, bạn cần thiết lập l�
 export DISPLAY=:0
 5. Cấp quyền truy cập X11 cho Docker
 Cấp quyền cho Docker có thể kết nối với hệ thống X11 để hiển thị đồ họa:
+xhost +local:docker
 6. Chạy Docker container với quyền truy cập camera và X11
 Chạy Docker container của bạn với quyền truy cập vào camera (USB hoặc CSI) và X11 để hiển thị kết quả:
 sudo docker run --rm --device /dev/video0 --runtime nvidia \
