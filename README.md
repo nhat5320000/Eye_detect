@@ -83,12 +83,18 @@ This project is designed for **driver drowsiness detection**. The system monitor
    git clone https://github.com/vodinhvu/Eye_State_Detect.git
    cd Eye_State_Detect/
    ```
+2. **Download UV**:
+   ```bash
+   wget -qO- https://astral.sh/uv/install.sh | sh
+   # Option 2.
+   curl -LsSf https://astral.sh/uv/install.sh | less
+   ```
 
 ---
 
 ## **Running the System**
 
-### **Option 1: Using Docker (Recommended)**
+### **Option 1: Using Docker (Recommended for camera USB)**
 
 Ensure the camera is connected to `/dev/video0` and start the system using Docker:  
 1. **Build the Docker Image**:
@@ -102,19 +108,53 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    docker run --rm --device /dev/video0 --runtime nvidia -p 8000:8000 eye-state-detection
    ```
 
-### **Option 2: Using Host Python**
+### **Option 2: Using vitural env 3.8(Recommended for camera CSI)**
 
-1. Install the required dependencies:
+1. Creating a python3.8 virtual environment:
    ```bash
-   pip install -r requirements.txt
+   uv venv -p 3.8
    ```
 
-2. Run the application:
+2. Activate ENV:
    ```bash
-   python src/main.py
+   source .venv/bin/activate
    ```
-
-The FastAPI WebView is automatically started alongside the main application.
+3. Download package:
+   ```bash
+   sudo apt install libopenmpi-dev libopenblas-base libomp-dev gcc
+   ```
+4. Download onxx and TRT:
+   ```bash
+   wget https://nvidia.box.com/shared/static/gjqofg7rkg97z3gc8jeyup6t8n9j8xjw.whl onnxruntime_gpu-1.8.0-cp38-cp38-linux_aarch64.whl
+   wget https://forums.developer.nvidia.com/uploads/short-url/hASzFOm9YsJx6VVFrDW1g44CMmv.whl tensorrt-8.2.0.6-cp38-none-linux_aarch64.whl
+   wget https://github.com/ultralytics/assets/releases/download/v0.0.0/torch-1.11.0a0+gitbc2c6ed-cp38-cp38-linux_aarch64.whl
+   wget https://github.com/ultralytics/assets/releases/download/v0.0.0/torchvision-0.12.0a0+9b5a3fe-cp38-cp38-linux_aarch64.whl
+   uv pip install *.whl
+   ```
+5. Download ultralytics:
+   ```bash
+   uv pip install ultralytics
+   uv pip install --no-cache-dir "onnx>=1.12.0" "onnxslim"
+   uv pip install numpy==1.23.5
+   uv pip install pip
+   ```
+6. Download OpenCV for CSI:
+   ```bash
+   OPENCV_VER="master"
+   TMPDIR=$(mktemp -d)
+   # Build and install OpenCV from source.
+   cd "${TMPDIR}"
+   git clone --branch ${OPENCV_VER} --depth 1 --recurse-submodules --shallow-submodules https://github.com/opencv/opencv-python.git opencv-python-${OPENCV_VER}
+   cd opencv-python-${OPENCV_VER}
+   export ENABLE_CONTRIB=0
+   export ENABLE_HEADLESS=0
+   # We want GStreamer support enabled.
+   export CMAKE_ARGS="-DWITH_QT=ON -DWITH_GTK=OFF -DWITH_GSTREAMER=ON"
+   python3 -m pip wheel . --verbose
+   # Install OpenCV
+   python3 -m pip install opencv_python*.whl
+   ```
+If using a USB camera without opencv installed.
 
 ---
 
