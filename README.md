@@ -154,7 +154,7 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    # Install OpenCV
    python3 -m pip install opencv_python*.whl
    ```
-If using a USB camera without opencv installed.
+If using a USB camera without opencv installed.LINK:(https://hub.docker.com/r/ultralytics/ultralytics)
 
 ---
 
