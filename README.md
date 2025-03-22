@@ -1,11 +1,11 @@
-# Eye_detect
+# AI_detect
 
-A compact, real-time system designed for NVIDIA Jetson Nano to detect whether a person’s eyes are open or closed. This project integrates YOLO for eye detection and a PyTorch-based classifier for state classification, with a WebView to visualize real-time results using FastAPI.
+Yolov11 User Manual for Jetson-Nano Jetpack 4.6
 
 ---
 
 ## **Features**
-- **Real-time Detection**: Identify and classify eye states in real time.  
+- **Real-time Detection**: Identify and classify in real time.  
 - **Pretrained Models**: Includes YOLOv11 and MobileNetV2 for efficient performance.  
 - **WebView Integration**: Visualize detection and classification results in real time via FastAPI.  
 - **Flexible Training Pipeline**: Simplified end-to-end training for detection and classification models.  
@@ -13,39 +13,12 @@ A compact, real-time system designed for NVIDIA Jetson Nano to detect whether a 
 ---
 
 ## **Use Case**
-This project is designed for **driver drowsiness detection**. The system monitors the driver’s eyes in real time, and if the driver’s eyes are detected as closed or not visible for a prolonged period, it triggers a warning to alert the driver.  
+Not enough money to buy Jetson-Orin ...  
 
 > **Note:** This project is under development and requires further optimization for real-world deployment. Enhancements in accuracy, responsiveness, and robustness are ongoing.
 
 ---
 
-## **Workflow**
-
-1. **Capture Video Frame**: The system continuously captures image frames from the video feed.  
-2. **Eye Detection**:  
-   - **If eyes are not detected**: Trigger a warning to the driver.  
-   - **If eyes are detected**: Proceed to the next step.  
-3. **Eye State Classification**:  
-   - Check the state (open or closed) of each detected eye.  
-   - **If any eye is detected as closed**: Trigger a warning to the driver.  
-4. **WebView Visualization**: Display real-time detection and classification results in a web interface powered by FastAPI.  
-5. **Real-time Processing**: This process is repeated continuously to ensure timely alerts.  
-
----
-
-## **Limitations and Optimization Opportunities**
-
-### **Limitations**
-- **MobileNetV2 Accuracy**: While MobileNetV2 offers efficient classification, it sometimes misclassifies the eye state due to its lightweight architecture.  
-- **Memory Constraints**: The NVIDIA Jetson Nano’s limited memory restricts the use of larger, more accurate models.
-- **Single Client Stream Limitation**: FastAPI can only serve a video stream to one client at a time, which limits scalability for multiple viewers.
-
-### **Planned Optimizations**
-1. **Model Compression**: Optimize larger models (e.g., EfficientNet or ResNet) using techniques like quantization or pruning to make them compatible with Jetson Nano.
-2. **RTSP Server Setup**: Integrate an RTSP server to handle multiple concurrent video streams, allowing scalability for real-time visualization across multiple clients.
-> **Discussion Point:** If you have suggestions for other optimization strategies, please share your ideas.
-
----
 
 ## **Requirements**
 
