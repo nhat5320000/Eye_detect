@@ -69,7 +69,12 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    ```bash
    docker build -t eye-state-detection .
    ```
-2. **Run the System Using Docker**: After the image is built, start the system using Docker:
+2. **Run the System Using Docker**: After the image is built, start the system using Docker(main.py with API):
+
+   ```bash
+   docker run --rm --device /dev/video0 --runtime nvidia -p 8000:8000 eye-state-detection
+   ```
+3. **Run the System Using Docker with USB cam**: Direct display on jetson-nano(main1.py with cv2.imshow):
 
    ```bash
    docker run --rm --device /dev/video0 --runtime nvidia -p 8000:8000 eye-state-detection
