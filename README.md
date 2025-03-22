@@ -79,7 +79,7 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    ```bash
    run --rm --device /dev/video0 --runtime nvidia   -e DISPLAY=:0   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   eye-state-detection
    ```
-If it cannot be displayed on cv2.imshows refer to cv2imshow.txt for permission
+If it cannot be displayed on cv2.imshows refer to Permisson
 ### **Option 2: Using vitural env 3.8(Recommended for camera CSI)**
 
 1. Creating a python3.8 virtual environment:
@@ -171,12 +171,12 @@ Detailed training steps are available in the respective directories:
 This project utilizes:  
 - **NVIDIA Jetson Nano** for edge computing.  
 - **YOLOv11** for eye detection.  
-- **MobileNetV2** for efficient eye state classification.  
+- **MobileNetV2** for efficient classification.  
 - **FastAPI** for serving the WebView.
 
 ---
 
-### **Option 2: Using Host Python**
+### **Permision**
 
 1. Install the required dependencies:
    ```bash
