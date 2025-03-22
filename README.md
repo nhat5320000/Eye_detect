@@ -77,9 +77,9 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
 3. **Run the System Using Docker with USB cam**: Direct display on jetson-nano(main1.py with cv2.imshow):
 
    ```bash
-   docker run --rm --device /dev/video0 --runtime nvidia -p 8000:8000 eye-state-detection
+   run --rm --device /dev/video0 --runtime nvidia   -e DISPLAY=:0   -v /tmp/.X11-unix:/tmp/.X11-unix:rw   eye-state-detection
    ```
-
+If it cannot be displayed on cv2.imshows refer to cv2imshow.txt for permission
 ### **Option 2: Using vitural env 3.8(Recommended for camera CSI)**
 
 1. Creating a python3.8 virtual environment:
@@ -131,7 +131,7 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    # Install OpenCV
    python3 -m pip install opencv_python*.whl
    ```
-If using a USB camera without opencv installed.LINK:(https://hub.docker.com/r/ultralytics/ultralytics)
+If using a USB camera without opencv installed.LINK documents:(https://hub.docker.com/r/ultralytics/ultralytics)
 
 ---
 
