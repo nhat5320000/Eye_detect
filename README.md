@@ -54,7 +54,7 @@ Not enough money to buy Jetson-Orin ...
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/nhat5320000/Eye_Detect.git
-   cd Eye_State_Detect/
+   cd Eye_Detect/
    ```
 
 ---
