@@ -80,14 +80,8 @@ This project is designed for **driver drowsiness detection**. The system monitor
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/vodinhvu/Eye_State_Detect.git
+   git clone https://github.com/nhat5320000/Eye_Detect.git
    cd Eye_State_Detect/
-   ```
-2. **Download UV**:
-   ```bash
-   wget -qO- https://astral.sh/uv/install.sh | sh
-   # Option 2.
-   curl -LsSf https://astral.sh/uv/install.sh | less
    ```
 
 ---
@@ -112,6 +106,11 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
 
 1. Creating a python3.8 virtual environment:
    ```bash
+   # Option 1 to download UV.
+   wget -qO- https://astral.sh/uv/install.sh | sh
+   # Option 2 to download UV.
+   curl -LsSf https://astral.sh/uv/install.sh | less
+   # Create virtual env 3.8
    uv venv -p 3.8
    ```
 
@@ -131,7 +130,7 @@ Ensure the camera is connected to `/dev/video0` and start the system using Docke
    wget https://github.com/ultralytics/assets/releases/download/v0.0.0/torchvision-0.12.0a0+9b5a3fe-cp38-cp38-linux_aarch64.whl
    uv pip install *.whl
    ```
-5. Download ultralytics:
+5. Download ultralytics and package:
    ```bash
    uv pip install ultralytics
    uv pip install --no-cache-dir "onnx>=1.12.0" "onnxslim"
