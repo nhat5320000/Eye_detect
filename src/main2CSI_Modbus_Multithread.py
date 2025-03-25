@@ -17,6 +17,10 @@ client = ModbusTcpClient(ip_address)
 model_path = "ttest.engine"
 object_detect = YOLO(model_path, task='detect')
 
+# Tên các lớp và màu sắc
+class_names = {0: "OK", 1: "NG", 2: "Object3", 3: "Object4", 4: "Object5"}
+color_map = {0: (0, 255, 0), 1: (0, 0, 255), 2: (0, 0, 255), 3: (255, 255, 0), 4: (0, 255, 255)}
+
 # Hàm đọc camera liên tục
 def read_camera():
     global frame, detecting
@@ -48,7 +52,14 @@ def detect_objects():
         if frame is not None:
             results = object_detect(frame, conf=0.5, imgsz=640)
             obj = 0 in results[0].boxes.cls.tolist()
-        time.sleep(0.05)  # Giảm tải CPU
+            # Vẽ bounding boxes
+                #for box, cls, conf in zip(detections.xyxy.int().tolist(), detections.cls.tolist(), detections.conf.tolist()):
+                #x1, y1, x2, y2 = box
+                #color = color_map.get(int(cls), (random.randint(0,255), random.randint(0,255), random.randint(0,255)))
+                #label = f"{class_names[int(cls)]}: {conf:.2f}"
+                #cv2.rectangle(frame_resized, (x1, y1), (x2, y2), color, 2)
+                #cv2.putText(frame_resized, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        #time.sleep(0.05)  # Giảm tải CPU
 
 # Hàm giao tiếp PLC
 def plc_communication():
