@@ -114,6 +114,7 @@ If it cannot be displayed on cv2.imshows refer to Permisson
    uv pip install --no-cache-dir "onnx>=1.12.0" "onnxslim"
    uv pip install numpy==1.23.5
    uv pip install pip
+   uv pip install pymodbus
    ```
 6. Download OpenCV for CSI:
    ```bash
