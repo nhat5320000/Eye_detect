@@ -50,6 +50,7 @@ def detect_objects():
     global obj
     while detecting:
         if frame is not None:
+            #frame_resized = frame.copy()  # Tạo bản sao để vẽ lên
             results = object_detect(frame, conf=0.5, imgsz=640)
             obj = 0 in results[0].boxes.cls.tolist()
             # Vẽ bounding boxes
@@ -60,6 +61,23 @@ def detect_objects():
                 #cv2.rectangle(frame_resized, (x1, y1), (x2, y2), color, 2)
                 #cv2.putText(frame_resized, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
         #time.sleep(0.05)  # Giảm tải CPU
+            # Kiểm tra nếu có phát hiện object
+            #for r in results:
+                #boxes = r.boxes.xyxy.cpu().numpy()  # Lấy tọa độ (x1, y1, x2, y2)
+                #classes = r.boxes.cls.cpu().numpy()  # Lấy nhãn class
+                #scores = r.boxes.conf.cpu().numpy()  # Lấy độ tự tin
+
+                #for box, cls, conf in zip(boxes, classes, scores):
+                    #x1, y1, x2, y2 = map(int, box)
+                    #color = color_map.get(int(cls), (255, 255, 255))  # Mặc định màu trắng nếu không có trong map
+                    #label = f"{class_names.get(int(cls), 'Unknown')}: {conf:.2f}"
+
+                    # Vẽ bounding box và label
+                    #cv2.rectangle(frame_resized, (x1, y1), (x2, y2), color, 2)
+                    #cv2.putText(frame_resized, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+
+            # Cập nhật frame để hiển thị
+            #frame = frame_resized
 
 # Hàm giao tiếp PLC
 def plc_communication():
