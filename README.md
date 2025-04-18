@@ -99,6 +99,8 @@ If it cannot be displayed on cv2.imshows refer to Permisson
 3. Download package:
    ```bash
    sudo apt install libopenmpi-dev libopenblas-base libomp-dev gcc
+   sudo apt install build-essential cmake pkg-config -y
+   sudo apt install libgtk-3-dev -y
    ```
 4. Download onxx and TRT:
    ```bash
