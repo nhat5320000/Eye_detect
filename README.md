@@ -99,6 +99,8 @@ If it cannot be displayed on cv2.imshows refer to Permisson
 3. Download package:
    ```bash
    sudo apt install libopenmpi-dev libopenblas-base libomp-dev gcc
+   ```
+   ```bash
    sudo apt-get install cmake
    sudo apt-get install gcc g++
    sudo apt-get install python3-dev python3-numpy
@@ -107,14 +109,20 @@ If it cannot be displayed on cv2.imshows refer to Permisson
    sudo apt-get install libgtk2.0-dev
    sudo apt-get install libgtk-3-dev
    ```
+Package for download OpenCV support CSI cameracamera(link: https://docs.opencv.org/4.11.0/d2/de6/tutorial_py_setup_in_ubuntu.html)
 4. Download onxx and TRT:
    ```bash
-   wget https://nvidia.box.com/shared/static/gjqofg7rkg97z3gc8jeyup6t8n9j8xjw.whl onnxruntime_gpu-1.8.0-cp38-cp38-linux_aarch64.whl
-   wget https://forums.developer.nvidia.com/uploads/short-url/hASzFOm9YsJx6VVFrDW1g44CMmv.whl tensorrt-8.2.0.6-cp38-none-linux_aarch64.whl
+   wget https://nvidia.box.com/shared/static/gjqofg7rkg97z3gc8jeyup6t8n9j8xjw.whl -O onnxruntime_gpu-1.8.0-cp38-cp38-linux_aarch64.whl
+   wget https://forums.developer.nvidia.com/uploads/short-url/hASzFOm9YsJx6VVFrDW1g44CMmv.whl -O tensorrt-8.2.0.6-cp38-none-linux_aarch64.whl
    wget https://github.com/ultralytics/assets/releases/download/v0.0.0/torch-1.11.0a0+gitbc2c6ed-cp38-cp38-linux_aarch64.whl
    wget https://github.com/ultralytics/assets/releases/download/v0.0.0/torchvision-0.12.0a0+9b5a3fe-cp38-cp38-linux_aarch64.whl
    uv pip install *.whl
    ```
+If install new version from web(link:https://hub.docker.com/r/ultralytics/ultralytics) 
+   ```bash
+   uv pip install *.whl
+   ```
+   If already file
 5. Download ultralytics and package:
    ```bash
    uv pip install ultralytics
@@ -123,7 +131,7 @@ If it cannot be displayed on cv2.imshows refer to Permisson
    uv pip install pip
    uv pip install pymodbus
    ```
-6. Download OpenCV for CSI:
+6. Download OpenCV for CSI:(https://stackoverflow.com/questions/54095699/install-gstreamer-support-for-opencv-python-package)
    ```bash
    OPENCV_VER="master"
    TMPDIR=$(mktemp -d)
@@ -139,7 +147,7 @@ If it cannot be displayed on cv2.imshows refer to Permisson
    # Install OpenCV
    python3 -m pip install opencv_python*.whl
    ```
-If using a USB camera without opencv installed.LINK documents:(https://hub.docker.com/r/ultralytics/ultralytics)
+If using a USB camera without opencv installed.
 
 ---
 
