@@ -110,6 +110,7 @@ If it cannot be displayed on cv2.imshows refer to Permisson
    sudo apt-get install libgtk-3-dev
    ```
 Package for download OpenCV support CSI cameracamera(link: https://docs.opencv.org/4.11.0/d2/de6/tutorial_py_setup_in_ubuntu.html)
+
 4. Download onxx and TRT:
    ```bash
    wget https://nvidia.box.com/shared/static/gjqofg7rkg97z3gc8jeyup6t8n9j8xjw.whl -O onnxruntime_gpu-1.8.0-cp38-cp38-linux_aarch64.whl
@@ -122,7 +123,8 @@ If install new version from web(link:https://hub.docker.com/r/ultralytics/ultral
    ```bash
    uv pip install *.whl
    ```
-   If already file
+   If already file in git clone
+   
 5. Download ultralytics and package:
    ```bash
    uv pip install ultralytics
